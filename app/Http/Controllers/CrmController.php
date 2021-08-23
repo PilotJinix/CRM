@@ -17,4 +17,8 @@ class CrmController extends Controller
         dd($data);
         return view("welcome");
     }
+
+    public function data(){
+        return view("welcome");
+    }
 }
