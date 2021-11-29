@@ -22,7 +22,7 @@
 
             <select class="form-select tes" aria-label="Default select example" id="tes" onchange="datachange()">
                 @foreach($data as $items)
-                    <option value="{{$items->year}}" {{\Carbon\Carbon::now()->format("Y") == $items->year? "selected":""}}>{{$items->year}}</option>
+                    <option value="{{$items->created_at}}" {{\Carbon\Carbon::now()->format("Y") == $items->created_at? "selected":""}}>{{$items->year}}</option>
                 @endforeach
             </select>
             <br>

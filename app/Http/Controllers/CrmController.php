@@ -10,23 +10,55 @@ use Illuminate\Support\Facades\DB;
 class CrmController extends Controller
 {
     public function index(){
-        $data = Authors::select([
-            DB::raw("count(*) as jumlah"),
-//            DB::raw("MONTH(created_at) as mont"),
-            DB::raw("YEAR(created_at) as year"),
-        ])
-//            ->whereYear("created_at", "=", "2019")
-            ->groupBy("year")
-            ->orderBy("year", "ASC")
-            ->get();
+//        $data = Authors::select([
+//            DB::raw("count(*) as jumlah"),
+////            DB::raw("MONTH(created_at) as mont"),
+//            DB::raw("YEAR(created_at) as year"),
+//        ])
+////            ->whereYear("created_at", "=", "2019")
+//            ->groupBy("year")
+//            ->orderBy("year", "ASC")
+//            ->get();
+
+//        $data = Authors::groupBy("")
+////            ->orderBy("year", "ASC")
+//            ->get();
+
+//        $data = Authors::select([
+//            DB::raw("count(*) as jumlah"),
+////            DB::raw("MONTH(created_at) as mont"),
+//            DB::raw("DATE(created_at) as year"),
+//        ])
+//            ->groupBy("year")
+//            ->get()
+//            ->toArray();
+//        dd($data);
 
 
-//            $data_tahun = Authors::get()
+//            $data = Authors::selectRaw("DATE(created_at) as data")->get()
 //                ->groupBy(function ($query){
 //                    return Carbon::parse($query->created_at)->format("Y");
-//                })
-//            ->toArray();
-//        dd($data_tahun);
+//                })->toArray();
+
+//        $data = Authors::selectRaw("DATE(created_at) as data")->get()
+//            ->groupBy(function ($query){
+//                return Carbon::parse($query->created_at)->format("Y");
+//            })->toArray();
+
+        $data = Carbon::parse(Authors::max("created_at"))->format("Y");
+//        dd($data);
+        $data2 = Carbon::parse(Authors::min("created_at"))->format("Y");
+
+
+//        dd(gettype($data2));
+        $data3 = (int)$data - (int)$data2;
+        dd($data3);
+            $da = [];
+            foreach ($data as $items => $value){
+                $da[]=$items;
+            }
+
+        dd($da);
 
 //        $q = Carbon::now()->format("Y");
 //        dd($q);
