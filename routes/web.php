@@ -15,3 +15,4 @@ use App\Http\Controllers\CrmController;
 */
 
 Route::get("/", [CrmController::class, "index"]);
+Route::get("data", [CrmController::class, "data_tes"])->name("data");
